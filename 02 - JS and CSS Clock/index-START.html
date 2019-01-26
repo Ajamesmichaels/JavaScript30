@@ -62,12 +62,28 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transition-duration: 0.2s;
+      transition-timing-function: cubic-bezier(0.9, 0.22, 0.91, 1.86);
+      transform: rotate(90deg);
     }
 
   </style>
 
   <script>
+    const secHand = document.querySelector('.min-hand');
 
+    function setDate() {
+      const now = new Date();
+      const sec = now.getSeconds();
+      const secDegree = (sec/60)*360;
+      const min = now.getMinutes();
+      const hr = now.getHours();
+
+      secHand.style.transform = `rotate(${secDegree}deg)`;
+    }
+    
+    var update = setInterval(setDate,1000);
 
   </script>
 </body>
